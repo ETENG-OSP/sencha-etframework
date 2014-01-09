@@ -1,4 +1,7 @@
 Ext.define('ETFramework.Backend', {
+	requires: [
+	    'Ext.Ajax'
+	],
 	singleton: true,
 
 	BASE_URL: 'http://192.168.0.169',
@@ -8,14 +11,20 @@ Ext.define('ETFramework.Backend', {
 	ENTRY: 'adaptPageList',
 	BODY_CLASSNAME: 'et.common.vo.query.QueryVO',
 
-	login: function (options) {
+	isSignIn: function () {
+		if (!localStorage.username || !localStorage.password) {
+			return false;
+		}
+		return true;
+	},
+
+	signIn: function (options) {
 		Ext.Ajax.request({
 			method: 'POST',
 			timeout: options.timeout || 10000,
 			url: options.url || (this.BASE_URL + this.LOGIN_PATH),
 			disableCaching: false,
 			useDefaultXhrHeader: false,
-			withCredentials: true,
 			params: {
 				type: 'mobile',
 				username: options.params.username,
@@ -25,14 +34,25 @@ Ext.define('ETFramework.Backend', {
 		});
 	},
 
+	signOut: function () {
+		delete localStorage.username;
+		delete localStorage.password;
+	},
+
 	request: function (options) {
+		if (!this.isSignIn()) {
+			console.warn('not signin');
+		}
+
+		options.params.username = localStorage.username;
+		options.params.password = localStorage.password;
+
 		Ext.Ajax.request({
 			method: 'POST',
 			timeout: options.timeout || 10000,
 			url: options.url || (this.BASE_URL + this.REQUEST_PATH),
 			disableCaching: false,
 			useDefaultXhrHeader: false,
-			withCredentials: true,
 			params: {
 				type: 'mobile',
 				WebInfo_Collection: Ext.encode({
@@ -64,8 +84,14 @@ Ext.define('ETFramework.Backend', {
 
 	loginCallback: function (req, success, res, callback) {
 		try {
-			console.log(arguments);
-			callback.call(this, null);
+			if (success === '') throw new Error('connection refuse');
+			if (!success) throw new Error('connection timeout');
+			var reply = Ext.decode(res.responseText);
+			if (!reply.success) throw new Error('no user');
+
+			localStorage.username = req.params.username;
+			localStorage.password = req.params.password;
+			callback.call(this, null, reply);
 		} catch (err) {
 			callback.call(this, err);
 		}
