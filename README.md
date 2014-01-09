@@ -1,5 +1,6 @@
-后台用法
-=============================
+ETFramework 1.0.1
+============================
+
 
 现在有登录与调用两个方法。
 一旦登录之后，前台会记录用户的身份。下次调用会自动登录，无需手动调用登录方法。
@@ -23,7 +24,7 @@ ETFramework.Backend.request({
 登录方法
 -----------------------------
 ```
-ETFramework.Backend.login({
+ETFramework.Backend.signIn({
     params: {
         username: 'tom',
         password: '123456'
@@ -34,8 +35,21 @@ ETFramework.Backend.login({
 });
 ```
 
+登出
+--------------------------
+```
+ETFramework.Backend.signOut();
+```
+
+检查登录状态
+--------------------------
+```
+ETFramework.Backend.isSignIn();
+```
+
 错误类型
 -----------------------------
- - connection refused
- - connection timeout
- - etframework exception
+- connection refused
+- connection timeout
+- etframework exception
+- no user 
