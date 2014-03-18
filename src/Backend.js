@@ -4,9 +4,9 @@ Ext.define('ETFramework.Backend', {
 	],
 	singleton: true,
 
-	BASE_URL: 'http://192.168.0.169',
+	BASE_URL: 'http://192.168.0.77',
 
-	REQUEST_PATH: '/servlet/WebPageSubmitAction',
+	REQUEST_PATH: '/servlet/MobileSubmitAction',
 	LOGIN_PATH: '/login/LoginSM',
 	ENTRY: 'adaptPageList',
 	BODY_CLASSNAME: 'et.common.vo.query.QueryVO',
@@ -19,6 +19,8 @@ Ext.define('ETFramework.Backend', {
 	},
 
 	signIn: function (options) {
+		options.params = options.params || {};
+
 		Ext.Ajax.request({
 			method: 'POST',
 			timeout: options.timeout || 10000,
@@ -40,6 +42,8 @@ Ext.define('ETFramework.Backend', {
 	},
 
 	request: function (options) {
+		options.params = options.params || {};
+
 		if (!this.isSignIn()) {
 			console.warn('not signin');
 		}
