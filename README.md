@@ -12,7 +12,7 @@ ETFramework 提供的 Controller 整合了一些便利功能：
 需要使用 Ext.app.Controller 时，直接继承 ETFramework.app.Controller 即可。
 
 ### 历史管理
-返回上一个 url。注意，在使用 `this.getApplication().getHistory().back()` 时，仅返回上一个 action。对于 HTML 标签进行的返回无法处理。使用一下方法则没有这个问题。
+返回上一个 url。注意，在使用 `this.getApplication().getHistory().back()` 时，仅返回上一个 action。对于 HTML 标签进行的返回无法处理。使用以下方法则没有这个问题。
 ```
 this.back();
 ```
