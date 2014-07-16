@@ -1,5 +1,23 @@
-ETFramework 1.0.1
+ETFramework 1.1.1
 ============================
+提供地图封装和便利功能
+
+地图
+----------------------------
+内置百度地图与高德地图。
+
+### 使用方法
+```
+{
+  xtype: 'amap',   // or 'baidumap'
+  latitude: <map center>,
+  longitude: <map center>,
+  markers: [{
+    latitude: <initial marker>,
+    longitude: <initial marker>
+  }]
+}
+```
 
 基础 Controller
 ----------------------------
