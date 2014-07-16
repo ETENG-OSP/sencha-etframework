@@ -1,9 +1,6 @@
 Ext.define('ETFramework.feature.Map', {
   extend: 'Ext.Component',
-<<<<<<< HEAD
   xtype: 'etmap',
-=======
->>>>>>> 4626e5d60a7b8f743cd2edd57335702711d40622
   config: {
     latitude: 39.915,
     longitude: 116.404,
@@ -35,10 +32,8 @@ Ext.define('ETFramework.feature.Map', {
   },
 
   // --- abstruct ---
-<<<<<<< HEAD
+
   address: Ext.emptyFn,
-=======
->>>>>>> 4626e5d60a7b8f743cd2edd57335702711d40622
   __addMarker: Ext.emptyFn,
   clear: Ext.emptyFn,
   center: Ext.emptyFn,

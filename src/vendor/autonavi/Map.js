@@ -47,7 +47,6 @@ Ext.define('ETFramework.vendor.autonavi.Map', {
     }));
     return this;
   },
-<<<<<<< HEAD
   
   address: function (longitude, latitude, callback){
 	  var self = this;
@@ -59,14 +58,14 @@ Ext.define('ETFramework.vendor.autonavi.Map', {
 		  }));
 		  AMap.event.addListener(encoder, 'complete', function (result) {
 			  var reply = {
-			      building: result.regeocode.addressComponent.building,
-				  city: result.regeocode.addressComponent.city,
-				  district: result.regeocode.addressComponent.district,
-				  neighborhood: result.regeocode.addressComponent.neighborhood,
-				  province: result.regeocode.addressComponent.province,
-				  street: result.regeocode.addressComponent.street,
-				  streetNumber: result.regeocode.addressComponent.streetNumber,
-				  township: result.regeocode.addressComponent.township,
+          building: result.regeocode.addressComponent.building,
+          city: result.regeocode.addressComponent.city,
+          district: result.regeocode.addressComponent.district,
+          neighborhood: result.regeocode.addressComponent.neighborhood,
+          province: result.regeocode.addressComponent.province,
+          street: result.regeocode.addressComponent.street,
+          streetNumber: result.regeocode.addressComponent.streetNumber,
+          township: result.regeocode.addressComponent.township,
 			  };
 			  callback(reply);
 		  });
@@ -74,23 +73,6 @@ Ext.define('ETFramework.vendor.autonavi.Map', {
   },
 
   // ====== amap shim =======
-
-=======
-
-  // ====== amap shim =======
-
-  initialize: function () {
-    this.callParent(arguments);
-    Ext.Viewport.on('amaploaded', this.onAMapLoaded, this, {
-      single: true
-    });
-  },
-
-  onAMapLoaded: function () {
-    Ext.getClass(this).onMapLoaded();
-  },
-
->>>>>>> 4626e5d60a7b8f743cd2edd57335702711d40622
   statics: {
     url: 'http://webapi.amap.com/maps',
     query: {
@@ -106,15 +88,15 @@ Ext.define('ETFramework.vendor.autonavi.Map', {
   }
 
 }, function () {
-<<<<<<< HEAD
+
   Ext.Viewport.on('amaploaded', function () {
-	this.onMapLoaded();
+    this.onMapLoaded();
   }, this, {
     single: true
   });
-=======
->>>>>>> 4626e5d60a7b8f743cd2edd57335702711d40622
+
   this.loadApi();
+  
 });
 
 function AMapCallback() {
