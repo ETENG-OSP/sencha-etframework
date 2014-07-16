@@ -18,8 +18,11 @@ Ext.define('ETFramework.vendor.autonavi.Map', {
     });
 
     this.addMarkers(this.getMarkers());
+<<<<<<< HEAD
     
     this.fireEvent('ready');
+=======
+>>>>>>> 4626e5d60a7b8f743cd2edd57335702711d40622
   },
 
   __addMarker: function (longitude, latitude) {
@@ -44,6 +47,7 @@ Ext.define('ETFramework.vendor.autonavi.Map', {
     }));
     return this;
   },
+<<<<<<< HEAD
   
   address: function (longitude, latitude, callback){
 	  var self = this;
@@ -71,6 +75,22 @@ Ext.define('ETFramework.vendor.autonavi.Map', {
 
   // ====== amap shim =======
 
+=======
+
+  // ====== amap shim =======
+
+  initialize: function () {
+    this.callParent(arguments);
+    Ext.Viewport.on('amaploaded', this.onAMapLoaded, this, {
+      single: true
+    });
+  },
+
+  onAMapLoaded: function () {
+    Ext.getClass(this).onMapLoaded();
+  },
+
+>>>>>>> 4626e5d60a7b8f743cd2edd57335702711d40622
   statics: {
     url: 'http://webapi.amap.com/maps',
     query: {
@@ -86,11 +106,14 @@ Ext.define('ETFramework.vendor.autonavi.Map', {
   }
 
 }, function () {
+<<<<<<< HEAD
   Ext.Viewport.on('amaploaded', function () {
 	this.onMapLoaded();
   }, this, {
     single: true
   });
+=======
+>>>>>>> 4626e5d60a7b8f743cd2edd57335702711d40622
   this.loadApi();
 });
 
