@@ -1,23 +1,15 @@
 Ext.define('ETFramework.Backend', {
-	singleton: true,
 	requires: [
-	  'Ext.Ajax'
+	    'Ext.Ajax'
 	],
-
-	config: {
-		defaultOptions: {
-			method: 'POST',
-			timeout: 10000,
-			url: 'http://192.168.0.77/servlet/MobileSubmitAction',
-			disableCaching: false,
-			useDefaultXhrHeader: false,
-		}
-	},
-	
+	singleton: true,
 
 	BASE_URL: 'http://192.168.0.77',
+
 	REQUEST_PATH: '/servlet/MobileSubmitAction',
 	LOGIN_PATH: '/login/LoginSM',
+	ENTRY: 'adaptPageList',
+	BODY_CLASSNAME: 'et.common.vo.query.QueryVO',
 
 	isSignIn: function () {
 		if (!localStorage.username || !localStorage.password) {
@@ -66,7 +58,16 @@ Ext.define('ETFramework.Backend', {
 			url: options.url || (this.BASE_URL + this.REQUEST_PATH),
 			disableCaching: false,
 			useDefaultXhrHeader: false,
-			params: options.params,
+			params: {
+				type: 'mobile',
+				WebInfo_Collection: Ext.encode({
+					Server_Bo_Name: options.bo,
+					Server_Bo_MethodName: this.ENTRY,
+					BodyClassName: this.BODY_CLASSNAME,
+					DD_BillType: 'PAGE_LIST',
+					params: options.params
+				})
+			},
 			callback: Ext.bind(this.requestCallback, options.scope, [options.callback], true)
 		});
 	},
