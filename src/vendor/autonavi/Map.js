@@ -35,6 +35,21 @@ Ext.define('ETFramework.vendor.autonavi.Map', {
     return this;
   },
 
+  polyline: function (positions) {
+    var map = this.__map;
+
+    var path = Ext.Array.map(positions, function (position) {
+      return this.createPosition(position);
+    }, this);
+
+    console.log(path);
+
+    var polyline = new AMap.Polyline({
+      map: map,
+      path: path
+    });
+  },
+
   center: function (longitude, latitude) {
     this.__map.setCenter(this.createPosition({
       longitude: longitude,

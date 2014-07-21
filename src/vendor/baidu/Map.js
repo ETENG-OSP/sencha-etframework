@@ -60,6 +60,17 @@ Ext.define('ETFramework.vendor.baidu.Map', {
     this.__map.panTo(new BMap.Point(longitude, latitude));
   },
 
+  polyline: function (positions) {
+    var map = this.__map;
+
+    var path = Ext.Array.map(positions, function (position) {
+      return this.createPosition(position);
+    }, this);
+
+    var polyline = new BMap.Polyline(path);
+    map.addOverlay(polyline);
+  },
+
   statics: {
     url: 'http://api.map.baidu.com/api',
     query: {

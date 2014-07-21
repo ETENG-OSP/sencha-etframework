@@ -32,17 +32,16 @@ Ext.define('ETFramework.feature.Map', {
   },
 
   // --- abstruct ---
-
+  polyline: Ext.emptyFn,
   address: Ext.emptyFn,
   __addMarker: Ext.emptyFn,
   clear: Ext.emptyFn,
   center: Ext.emptyFn,
 
   //
-
   __initMap: function () {
     this.initMap();
-    this.fireEvent('ready');
+    this.fireEvent('ready', this);
   },
 
   inheritableStatics: {
