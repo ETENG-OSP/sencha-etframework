@@ -18,11 +18,6 @@ Ext.define('ETFramework.vendor.autonavi.Map', {
     });
 
     this.addMarkers(this.getMarkers());
-<<<<<<< HEAD
-    
-    this.fireEvent('ready');
-=======
->>>>>>> 4626e5d60a7b8f743cd2edd57335702711d40622
   },
 
   __addMarker: function (longitude, latitude) {
@@ -47,7 +42,7 @@ Ext.define('ETFramework.vendor.autonavi.Map', {
     }));
     return this;
   },
-  
+
   address: function (longitude, latitude, callback){
 	  var self = this;
 	  this.__map.plugin(['AMap.Geocoder'], function () {
@@ -76,7 +71,7 @@ Ext.define('ETFramework.vendor.autonavi.Map', {
   statics: {
     url: 'http://webapi.amap.com/maps',
     query: {
-      v: '1.2',
+      v: '1.3',
       key: '3390ee8f0b3a0aff284cf0b889176233'
     },
 
@@ -96,7 +91,7 @@ Ext.define('ETFramework.vendor.autonavi.Map', {
   });
 
   this.loadApi();
-  
+
 });
 
 function AMapCallback() {

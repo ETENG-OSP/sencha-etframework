@@ -39,6 +39,12 @@ Ext.define('ETFramework.feature.Map', {
   center: Ext.emptyFn,
 
   //
+
+  __initMap: function () {
+    this.initMap();
+    this.fireEvent('ready');
+  },
+
   inheritableStatics: {
     isMapLoaded: function () {
       return this.__mapLoaded;
@@ -62,7 +68,7 @@ Ext.define('ETFramework.feature.Map', {
       this.__mapLoaded = true;
 
       Ext.Array.forEach(this.__paddingInstances, function (instance) {
-        instance.initMap();
+        instance.__initMap();
       });
       this.clearQueue();
     },
@@ -107,6 +113,6 @@ Ext.define('ETFramework.feature.Map', {
       loader.paddingInstance(this);
       return;
     }
-    this.initMap();
+    this.__initMap();
   }
 });
